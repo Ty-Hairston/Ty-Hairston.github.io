@@ -1,374 +1,449 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ty Hairston // Portfolio</title>
 
-<title>Ty Hairston</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-
 :root{
-    --bg:#0d0f0d;
-    --surface:#161916;
+--green:#6e8f75;
+--green-dim:#58735f;
+--green-dark:#26332a;
+--maroon:#5c2432;
 
-    --forest:#44604a;
-    --forest-light:#6c8a72;
+--bg:#11141a;
+--surface:rgba(255,255,255,.03);
+--border:rgba(110,143,117,.18);
+--border-bright:rgba(110,143,117,.35);
 
-    --maroon:#5c2432;
+--text:#e8e6e0;
+--text-dim:#8a8d92;
 
-    --text:#e7e7df;
-    --muted:#8a9088;
-
-    --border:rgba(255,255,255,.08);
+--mono:'Share Tech Mono', monospace;
+--sans:'Rajdhani', sans-serif;
 }
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
-}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
 
 body{
-    background:var(--bg);
-    color:var(--text);
-    font-family:'Inter',sans-serif;
-    line-height:1.7;
+background:var(--bg);
+color:var(--text);
+font-family:var(--sans);
+overflow-x:hidden;
+position:relative;
 }
 
-/* Navigation */
+body::before{
+content:'';
+position:fixed;
+inset:0;
+pointer-events:none;
+background:
+radial-gradient(circle at 20% 25%, rgba(110,143,117,.12), transparent 30%),
+radial-gradient(circle at 80% 70%, rgba(92,36,50,.08), transparent 35%);
+}
 
 nav{
-    position:fixed;
-    top:0;
-    width:100%;
-    z-index:100;
-    backdrop-filter:blur(12px);
-    background:rgba(13,15,13,.8);
-    border-bottom:1px solid var(--border);
+position:fixed;
+top:0;left:0;right:0;
+z-index:1000;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:1rem 2rem;
+backdrop-filter:blur(12px);
+background:rgba(17,20,26,.85);
+border-bottom:1px solid var(--border);
 }
 
-.nav-inner{
-    max-width:1200px;
-    margin:auto;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:1.2rem 2rem;
-}
-
-.logo{
-    font-weight:700;
-    letter-spacing:.08em;
+.nav-logo{
+font-family:var(--mono);
+color:var(--green);
+letter-spacing:.18em;
+font-size:.8rem;
 }
 
 .nav-links{
-    display:flex;
-    gap:2rem;
+display:flex;
+list-style:none;
+gap:2rem;
 }
 
 .nav-links a{
-    color:var(--muted);
-    text-decoration:none;
-    transition:.3s;
+font-family:var(--mono);
+font-size:.72rem;
+text-decoration:none;
+color:var(--text-dim);
+letter-spacing:.12em;
+text-transform:uppercase;
 }
 
-.nav-links a:hover{
-    color:var(--forest-light);
+.nav-links a:hover{color:var(--green)}
+
+#hero{
+min-height:100vh;
+display:flex;
+align-items:center;
+padding:0 2rem;
+max-width:1100px;
+margin:auto;
 }
 
-/* Hero */
-
-.hero{
-    min-height:100vh;
-    display:flex;
-    align-items:center;
+.hero-name{
+font-size:clamp(4rem,10vw,7rem);
+line-height:.95;
+font-weight:700;
 }
 
-.hero-inner{
-    max-width:1200px;
-    margin:auto;
-    width:100%;
-    padding:0 2rem;
+.accent{color:var(--green)}
+
+.hero-meta{
+margin-top:1rem;
+font-family:var(--mono);
+font-size:.78rem;
+letter-spacing:.15em;
+color:var(--text-dim);
+text-transform:uppercase;
 }
 
-.eyebrow{
-    color:var(--forest-light);
-    text-transform:uppercase;
-    letter-spacing:.3em;
-    font-size:.75rem;
-    margin-bottom:1rem;
+.hero-subtitle{
+margin-top:1.5rem;
+font-family:var(--mono);
+color:var(--green);
+font-size:.9rem;
 }
 
-.hero h1{
-    font-size:clamp(4rem,10vw,8rem);
-    line-height:.9;
-    font-weight:800;
-    letter-spacing:-4px;
+.cursor{
+animation:blink 1s infinite;
 }
 
-.hero h1 span{
-    color:var(--forest-light);
+section{
+max-width:1100px;
+margin:auto;
+padding:6rem 2rem;
 }
 
-.hero-copy{
-    max-width:650px;
-    margin-top:2rem;
-    color:var(--muted);
-    font-size:1.1rem;
+.section-header{
+display:flex;
+align-items:center;
+gap:1rem;
+margin-bottom:3rem;
 }
 
-.hero-quote{
-    margin-top:2rem;
-    padding-left:1rem;
-    border-left:3px solid var(--maroon);
-    color:var(--text);
+.section-num{
+font-family:var(--mono);
+font-size:.7rem;
+color:var(--green);
 }
 
-.hero-buttons{
-    margin-top:3rem;
-    display:flex;
-    gap:1rem;
+.section-title{
+font-size:2rem;
+font-weight:700;
+text-transform:uppercase;
 }
 
-.btn{
-    padding:1rem 1.5rem;
-    text-decoration:none;
-    border-radius:8px;
-    transition:.3s;
-}
-
-.btn-primary{
-    background:var(--forest);
-    color:white;
-}
-
-.btn-primary:hover{
-    transform:translateY(-2px);
-}
-
-.btn-secondary{
-    border:1px solid var(--border);
-    color:var(--text);
-}
-
-/* About */
-
-.section{
-    max-width:1200px;
-    margin:auto;
-    padding:8rem 2rem;
-}
-
-.section-label{
-    color:var(--forest-light);
-    text-transform:uppercase;
-    letter-spacing:.3em;
-    font-size:.75rem;
-    margin-bottom:1rem;
-}
-
-.section h2{
-    font-size:3rem;
-    margin-bottom:2rem;
+.section-line{
+flex:1;
+height:1px;
+background:var(--border);
 }
 
 .about-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:3rem;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:2rem;
 }
 
 .card{
-    background:var(--surface);
-    border:1px solid var(--border);
-    padding:2rem;
-    border-radius:12px;
+background:var(--surface);
+border:1px solid var(--border);
+padding:2rem;
+position:relative;
 }
 
-.card p{
-    color:var(--muted);
+.card::before{
+content:'';
+position:absolute;
+top:0;
+left:0;
+width:40px;
+height:3px;
+background:var(--maroon);
 }
 
-/* Contact */
+.label{
+font-family:var(--mono);
+font-size:.65rem;
+letter-spacing:.15em;
+color:var(--green);
+margin-bottom:.8rem;
+text-transform:uppercase;
+}
 
-#contact{
-    border-top:1px solid var(--border);
+.profile-fields{display:flex;flex-direction:column;gap:1rem}
+
+.field{
+display:flex;
+gap:1rem;
+padding-bottom:.7rem;
+border-bottom:1px solid rgba(255,255,255,.05);
+}
+
+.key{
+font-family:var(--mono);
+font-size:.65rem;
+color:var(--text-dim);
+min-width:100px;
+}
+
+.skills-grid,.learning-grid,.projects-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:1.5rem;
+}
+
+.skill,.learning,.project{
+background:var(--surface);
+border:1px solid var(--border);
+padding:1.5rem;
+}
+
+.skill-title,.project-title,.learning-title{
+color:var(--green);
+font-family:var(--mono);
+margin-bottom:.8rem;
 }
 
 .contact-inner{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    flex-wrap:wrap;
-    gap:2rem;
+display:flex;
+justify-content:space-between;
+gap:2rem;
+flex-wrap:wrap;
 }
 
-.contact-title{
-    font-size:3rem;
-    font-weight:700;
+.big{
+font-size:2.2rem;
+font-weight:700;
 }
 
-.contact-title span{
-    color:var(--forest-light);
+.big span{color:var(--green)}
+
+.small{
+font-family:var(--mono);
+color:var(--text-dim);
+margin-top:.5rem;
+font-size:.78rem;
 }
 
 .contact-links{
-    display:flex;
-    flex-direction:column;
-    gap:1rem;
+display:flex;
+flex-direction:column;
+gap:.8rem;
 }
 
-.contact-links a{
-    color:var(--text);
-    text-decoration:none;
+.contact-link{
+display:flex;
+align-items:center;
+gap:.8rem;
+text-decoration:none;
+color:var(--text);
 }
 
-.contact-links a:hover{
-    color:var(--forest-light);
+.icon{
+width:32px;height:32px;
+border:1px solid var(--border);
+display:flex;
+align-items:center;
+justify-content:center;
+font-family:var(--mono);
+color:var(--green);
 }
 
 footer{
-    text-align:center;
-    padding:2rem;
-    color:var(--muted);
-    border-top:1px solid var(--border);
+border-top:1px solid var(--border);
+padding:1.5rem 2rem;
+display:flex;
+justify-content:space-between;
+font-family:var(--mono);
+font-size:.65rem;
+color:var(--text-dim);
 }
 
-@media(max-width:800px){
-
-.about-grid{
-    grid-template-columns:1fr;
+@keyframes blink{
+50%{opacity:0}
 }
 
-.hero h1{
-    letter-spacing:-2px;
+@media(max-width:700px){
+.about-grid{grid-template-columns:1fr}
+.nav-links{gap:1rem}
+footer{flex-direction:column;gap:.5rem}
 }
-
-.nav-links{
-    display:none;
-}
-
-}
-
 </style>
-
 </head>
-
 <body>
 
 <nav>
-    <div class="nav-inner">
-        <div class="logo">TY HAIRSTON</div>
+<div class="nav-logo">PORTFOLIO</div>
 
-```
-    <div class="nav-links">
-        <a href="#about">About</a>
-        <a href="#work">Projects</a>
-        <a href="#contact">Contact</a>
-    </div>
-</div>
-```
-
+<ul class="nav-links">
+<li><a href="#about">Dossier</a></li>
+<li><a href="#skills">Capabilities</a></li>
+<li><a href="#learning">Learning</a></li>
+<li><a href="#projects">Case Files</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
 </nav>
 
-<section class="hero">
+<section id="hero">
+<div>
+<h1 class="hero-name">Ty<br><span class="accent">Hairston</span></h1>
 
-<div class="hero-inner">
-
-<div class="eyebrow">
-Digital Investigation • Research • Cybersecurity
+<div class="hero-meta">
+Texas • ACC • Texas State
 </div>
 
-<h1>
-TY<br>
-<span>HAIRSTON</span>
-</h1>
-
-<p class="hero-copy">
-Cybersecurity student focused on digital investigation,
-OSINT research, networking, and understanding how
-information moves through systems and people.
-</p>
-
-<div class="hero-quote">
-Observation is a skill. Investigation is a process.
+<div class="hero-subtitle">
+<span id="typed"></span><span class="cursor">|</span>
 </div>
-
-<div class="hero-buttons">
-<a href="#about" class="btn btn-primary">View Dossier</a>
-<a href="#contact" class="btn btn-secondary">Contact</a>
 </div>
-
-</div>
-
 </section>
 
-<section id="about" class="section">
-
-<div class="section-label">
-Observations
+<section id="about">
+<div class="section-header">
+<span class="section-num">01 //</span>
+<h2 class="section-title">Dossier</h2>
+<div class="section-line"></div>
 </div>
-
-<h2>About</h2>
 
 <div class="about-grid">
-
 <div class="card">
-<p>
-I approach technology through investigation and research.
-My interests include cybersecurity, OSINT, networking,
-digital forensics, and understanding patterns hidden within
-data, systems, and human behavior.
-</p>
+<div class="label">Subject Profile</div>
+<p>IT student at Austin Community College with interests in research, analysis, OSINT, networking, and digital investigation. Building practical skills through coursework and self-directed learning.</p>
 </div>
 
 <div class="card">
-<p>
-Currently studying Information Technology while building
-hands-on experience through independent projects,
-documentation, and continuous learning.
-</p>
+<div class="label">Field Data</div>
+<div class="profile-fields">
+<div class="field"><span class="key">Location</span><span>Texas</span></div>
+<div class="field"><span class="key">Education</span><span>ACC → Texas State</span></div>
+<div class="field"><span class="key">Focus</span><span>Research & Analysis</span></div>
+<div class="field"><span class="key">Goal</span><span>Digital Investigation</span></div>
 </div>
-
 </div>
-
+</div>
 </section>
 
-<section id="contact" class="section">
-
-<div class="contact-inner">
-
-<div>
-<div class="contact-title">
-Let's <span>Connect</span>
+<section id="skills">
+<div class="section-header">
+<span class="section-num">02 //</span>
+<h2 class="section-title">Capabilities</h2>
+<div class="section-line"></div>
 </div>
 
-<p style="color:var(--muted); margin-top:1rem;">
-Open to internships, collaboration, and opportunities.
-</p>
+<div class="skills-grid">
+<div class="skill"><div class="skill-title">Cybersecurity</div>Networking • Security Fundamentals • Threat Analysis</div>
+<div class="skill"><div class="skill-title">OSINT</div>Research • Documentation • Investigation Methods</div>
+<div class="skill"><div class="skill-title">Tools</div>GitHub • Linux • Virtual Machines • Python Basics</div>
+</div>
+</section>
+
+<section id="learning">
+<div class="section-header">
+<span class="section-num">03 //</span>
+<h2 class="section-title">Current Learning</h2>
+<div class="section-line"></div>
+</div>
+
+<div class="learning-grid">
+<div class="learning"><div class="learning-title">Python Fundamentals</div>Learning through small projects and scripting practice.</div>
+<div class="learning"><div class="learning-title">Git & GitHub</div>Building version control workflow habits.</div>
+<div class="learning"><div class="learning-title">Linux Administration</div>Studying system management and command-line usage.</div>
+<div class="learning"><div class="learning-title">Network Analysis</div>Exploring traffic inspection and network behavior.</div>
+</div>
+</section>
+
+<section id="projects">
+<div class="section-header">
+<span class="section-num">04 //</span>
+<h2 class="section-title">Case Files</h2>
+<div class="section-line"></div>
+</div>
+
+<div class="projects-grid">
+<div class="project"><div class="project-title">CASE-001</div>Portfolio Website</div>
+<div class="project"><div class="project-title">CASE-002</div>Python Learning Repository</div>
+<div class="project"><div class="project-title">CASE-003</div>Investigation Writeups</div>
+</div>
+</section>
+
+<section id="contact">
+<div class="contact-inner">
+<div>
+<div class="big">Let's <span>Connect</span></div>
+<div class="small">// Open to collaboration, internships & opportunities</div>
 </div>
 
 <div class="contact-links">
-<a href="https://github.com/ty-hairston">GitHub</a>
-<a href="https://linkedin.com">LinkedIn</a>
-<a href="mailto:youremail@email.com">Email</a>
-</div>
+<a class="contact-link" href="https://github.com/ty-hairston">
+<div class="icon">GH</div>
+github.com/ty-hairston
+</a>
 
-</div>
+<a class="contact-link" href="https://www.linkedin.com/in/ty-hairston-356184376">
+<div class="icon">LI</div>
+linkedin.com/in/ty-hairston
+</a>
 
+<a class="contact-link" href="mailto:Ty.hairston16@gmail.com">
+<div class="icon">@</div>
+Ty.hairston16@gmail.com
+</a>
+</div>
+</div>
 </section>
 
 <footer>
-© 2026 Ty Hairston
+<span>© 2026 Ty Hairston</span>
+<span>Built with intent // Texas</span>
 </footer>
+
+<script>
+const phrases=[
+"Research & Analysis",
+"Digital Investigator",
+"OSINT Researcher",
+"IT Student @ ACC",
+"Documenting The Process"
+];
+
+let p=0,c=0,d=false;
+const el=document.getElementById("typed");
+
+function type(){
+const current=phrases[p];
+
+if(!d){
+el.textContent=current.slice(0,++c);
+if(c===current.length){
+d=true;
+setTimeout(type,1500);
+return;
+}
+}else{
+el.textContent=current.slice(0,--c);
+if(c===0){
+d=false;
+p=(p+1)%phrases.length;
+}
+}
+setTimeout(type,d?40:80);
+}
+type();
+</script>
 
 </body>
 </html>
